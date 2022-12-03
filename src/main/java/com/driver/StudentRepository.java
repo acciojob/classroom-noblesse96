@@ -55,22 +55,21 @@ public class StudentRepository {
 
     public void deleteTeacherByName(String teacher){
 
-        HashSet<String> students = new HashSet<>();
+        List<String> students = new ArrayList<String>();
         if(teacherStudentMap.containsKey(teacher)){
-            for(String student: teacherStudentMap.get(teacher)){
-                students.add(student);
+            students = teacherStudentMap.get(teacher);
+            for(String student: students){
+                if(studentMap.containsKey(student)){
+                    studentMap.remove(student);
+                }
             }
+
             teacherStudentMap.remove(teacher);
         }
 
-        for(String student: studentMap.keySet()){
-            if(students.contains(student)){
-                studentMap.remove(student);
-            }
+        if(teacherMap.containsKey(teacher)){
+            teacherMap.remove(teacher);
         }
-
-        if(teacherMap.containsKey(teacher)) teacherMap.remove(teacher);
-
     }
 
     public void deleteAllTeachers(){
