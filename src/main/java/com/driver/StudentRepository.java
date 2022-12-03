@@ -55,7 +55,7 @@ public class StudentRepository {
 
     public void deleteTeacherByName(String teacher){
 
-        List<String> students = new ArrayList<String>();
+        List<String> students = new ArrayList<>();
         if(teacherStudentMap.containsKey(teacher)){
             students = teacherStudentMap.get(teacher);
             for(String student: students){
@@ -63,13 +63,13 @@ public class StudentRepository {
                     studentMap.remove(student);
                 }
             }
-
             teacherStudentMap.remove(teacher);
         }
 
-        if(teacherMap.containsKey(teacher)){
-            teacherMap.remove(teacher);
-        }
+
+
+        if(teacherMap.containsKey(teacher)) teacherMap.remove(teacher);
+
     }
 
     public void deleteAllTeachers(){
