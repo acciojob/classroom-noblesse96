@@ -62,13 +62,14 @@ public class StudentRepository {
             }
             teacherStudentMap.remove(teacher);
         }
-        teacherMap.remove(teacher);
 
         for(String student: studentMap.keySet()){
             if(students.contains(student)){
                 studentMap.remove(student);
             }
         }
+
+        if(teacherMap.containsKey(teacher)) teacherMap.remove(teacher);
 
     }
 
